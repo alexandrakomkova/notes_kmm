@@ -1,0 +1,29 @@
+CREATE TABLE noteEntity (
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    content TEXT NOT NULL,
+    timestamp INTEGER NOT NULL
+);
+
+getAllNotes:
+SELECT *
+FROM noteEntity
+ORDER BY timestamp ASC;
+
+getNoteById:
+SELECT *
+FROM noteEntity
+WHERE id = :id;
+
+deleteNoteById:
+DELETE FROM noteEntity
+WHERE id = :id;
+
+insertNote:
+INSERT OR REPLACE
+INTO noteEntity(
+    id,
+    title,
+    content,
+    timestamp
+) VALUES (?, ?, ?, ?);
